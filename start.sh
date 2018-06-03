@@ -9,8 +9,10 @@ if [ $# -eq 0 ]; then
     exit
 fi
 
+uwsgi=$(which uwsgi)
 mkdir -p /var/run/uwsgi/
 mkdir -p /var/log/uwsgi/
+touch /var/log/uwsgi/GitHubPRAPI.log && chmod +r /var/log/uwsgi/GitHubPRAPI.log
 
 echo "Running GitHubPRAPI at /var/www/GitHubPRAPI/"
 echo "Log File at /var/log/uwsgi/GitHubPRAPI.log"
@@ -19,7 +21,7 @@ echo "Log File at /var/log/uwsgi/GitHubPRAPI.log"
 case $1 in
 
     start)
-        /usr/local/bin/uwsgi --ini GitHubPRAPI.ini
+        $uwsgi --ini GitHubPRAPI.ini
         if [ $? -eq 0 ];then
            echo "Server Started"
         else
@@ -35,7 +37,7 @@ case $1 in
         fi
         ;;
     stop)
-        /usr/local/bin/uwsgi --stop /var/run/uwsgi/GitHubPRAPI-master.pid
+        $uwsgi --stop /var/run/uwsgi/GitHubPRAPI-master.pid
         if [ $? -eq 0 ];then
            echo "Server Stopped"
         else
