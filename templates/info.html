@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>info | Github Pull Requests</title>
+    <style></style>
+</head>
+<p>
+<h1>Github Pull Requests Status</h1>
+<p>Please access the api via the below format to get the status of your pull requests
+    <pre><code class="language-sh">
+        hostname/:owner/:repo/:token
+    </code></pre>
+Token is your personal token generated from GitHub, this is required to avoid Github's api request limit.</p>
+<p>The below details will provide you a overview of the status</p>
+<ul>
+    <li>REVIEWER_PENDING - PR created and reviewer is not assigned</li>
+    <li>REVIEW_IN_PROGRESS - Reviewer is assigned and PR is not yet approved</li>
+    <li>STATUS_CHECK_PENDING - PR is approved and status checks are not reported</li>
+    <li>FAILING - Status checks are failing for the PR</li>
+    <li>MERGE_PENDING - PR is approved and status checks have passed</li>
+</ul>
+<p>The HTTP endpoint which returns the open PR states as json:</p>
+<pre><code class="language-json">{
+  prs: [
+    {
+      "id": 1,
+      "state": "REVIEWER_PENDING"
+    },
+    {
+      "id": 2,
+      "state": "FAILING"
+    }
+  ]
+}
+</code></pre>
+</body>
+</html>
