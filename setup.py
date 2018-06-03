@@ -7,5 +7,5 @@ setup(
     author='Ganesh Kumar J',
     author_email='ganesh.kumar.j@live.com',
     packages=['GitHubPRAPI'],
-    install_requires=['flask','urllib3','requests','validators']
+    install_requires=['flask','urllib3','requests','validators','tqdm','uwsgi']
 )
