@@ -21,7 +21,7 @@ echo "Log File at /var/log/uwsgi/GitHubPRAPI.log"
 case $1 in
 
     start)
-        $uwsgi --ini GitHubPRAPI.ini
+        $uwsgi --ini /var/www/GitHubPRAPI/GitHubPRAPI.ini
         if [ $? -eq 0 ];then
            echo "Server Started"
         else
